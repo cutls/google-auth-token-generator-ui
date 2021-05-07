@@ -13,7 +13,7 @@
     "webpack-dev-server": "^3.11.1"
   },
   "scripts": {
-    "build": "run-p build:*",
+    "build": "run-s build:*",
     "build:fn": "netlify-lambda build fn/",
     "build:view": "webpack build",
     "serve": "run-p serve:*",
@@ -21,6 +21,7 @@
     "serve:view": "webpack serve"
   },
   "dependencies": {
+    "encoding": "^0.1.13",
     "googleapis": "^73.0.0"
   }
 }
