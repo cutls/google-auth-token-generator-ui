@@ -39,7 +39,7 @@ document.getElementById('getToken').addEventListener('click', async e => {
     })
     const json = await promise.json()
     document.getElementById('copy').value = JSON.stringify(json.data)
-    document.getElementById('prmpt').classList.add('hide')
+    document.getElementById('prompt').classList.add('hide')
     document.getElementById('copyWrap').classList.remove('hide')
 })
 document.getElementById('copyCopy').addEventListener('click', async e => {
