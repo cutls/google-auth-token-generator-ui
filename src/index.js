@@ -34,9 +34,7 @@ document.getElementById('getToken').addEventListener('click', async e => {
         headers: {
             'content-type': 'application/json'
         },
-        body: {
-            code
-        }
+        body: JSON.stringify({ code })
     })
     const json = await promise.json()
     document.getElementById('code').value = JSON.stringify(json.data)
