@@ -1,0 +1,81 @@
+mixin scopes(url)
+    div
+        input.scopeCheck(type="checkbox", name="scope", value=url)
+        span.scopeLabel #{url}
+
+doctype html
+html(lang="ja")
+head
+    meta(charset="utf8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=yes")
+    title google-auth-token-generator-ui
+    style .hide {display: none} .scopeLabel {cursor: pointer}
+
+body
+    h1 google-auth-token-generator-ui
+    #initial 
+        h3 What will it be used for?
+        input#youtube(type="radio", name="type", value="youtube", checked)
+        label(for="youtube") YouTube
+        input#drive(type="radio", name="type", value="drive")
+        label(for="drive") Google Drive
+        input#gmail(type="radio", name="type", value="gmail")
+        label(for="gmail") Gmail
+        input#cal(type="radio", name="type", value="cal")
+        label(for="cal") Google Calendar
+        h3 Scopes
+        #youtubeScopes(name="scopeList")
+            +scopes('https://www.googleapis.com/auth/youtube')
+            +scopes('https://www.googleapis.com/auth/youtube.channel-memberships.creator')
+            +scopes('https://www.googleapis.com/auth/youtube.force-ssl')
+            +scopes('https://www.googleapis.com/auth/youtube.readonly')
+            +scopes('https://www.googleapis.com/auth/youtubepartner')
+            +scopes('https://www.googleapis.com/auth/youtubepartner-channel-audit')
+        #driveScopes.hide(name="scopeList")
+            +scopes('https://www.googleapis.com/auth/drive.appdata')
+            +scopes('https://www.googleapis.com/auth/drive.file')
+            +scopes('https://www.googleapis.com/auth/drive.install')
+            +scopes('https://www.googleapis.com/auth/drive.apps.readonly')
+            +scopes('https://www.googleapis.com/auth/drive.metadata')
+            +scopes('https://www.googleapis.com/auth/drive')
+            +scopes('https://www.googleapis.com/auth/drive.activity')
+            +scopes('https://www.googleapis.com/auth/drive.activity.readonly')
+            +scopes('https://www.googleapis.com/auth/drive.readonly')
+            +scopes('https://www.googleapis.com/auth/drive.metadata.readonly')
+            +scopes('https://www.googleapis.com/auth/drive.scripts')
+        #gmailScopes.hide(name="scopeList")
+            +scopes('https://mail.google.com/')
+            +scopes('https://www.googleapis.com/auth/gmail.addons.current.action.compose')
+            +scopes('https://www.googleapis.com/auth/gmail.addons.current.message.action')
+            +scopes('https://www.googleapis.com/auth/gmail.addons.current.message.metadata')
+            +scopes('https://www.googleapis.com/auth/gmail.addons.current.message.readonly')
+            +scopes('https://www.googleapis.com/auth/gmail.compose')
+            +scopes('https://www.googleapis.com/auth/gmail.insert')
+            +scopes('https://www.googleapis.com/auth/gmail.labels')
+            +scopes('https://www.googleapis.com/auth/gmail.metadata')
+            +scopes('https://www.googleapis.com/auth/gmail.modify')
+            +scopes('https://www.googleapis.com/auth/gmail.readonly')
+            +scopes('https://www.googleapis.com/auth/gmail.send')
+            +scopes('https://www.googleapis.com/auth/gmail.settings.basic')
+            +scopes('https://www.googleapis.com/auth/gmail.settings.sharing')
+        #calScopes.hide(name="scopeList")
+            +scopes('https://www.googleapis.com/auth/calendar')
+            +scopes('https://www.googleapis.com/auth/calendar.readonly')
+            +scopes('https://www.googleapis.com/auth/calendar.events')
+            +scopes('https://www.googleapis.com/auth/calendar.events.readonly')
+            +scopes('https://www.googleapis.com/auth/calendar.settings.readonly')
+            +scopes('https://www.googleapis.com/auth/calendar.addons.execute')
+        br
+        button#makeUrl Get auth
+        a#blank.hide(target="blank") Click here
+    #auth.hide 
+        #prompt
+            h3#title Paste code here
+            input#code(placeholder="Paste code here")
+            button#getToken Get token
+        #copyWrap.hide
+            h3#title This is credential
+            input#copy
+            button#copyCopy Copy
+    div 
+        a(target="blank", href="https://github.com/cutls/google-auth-token-generator-ui") source code (cutls/google-auth-token-generator-ui)
