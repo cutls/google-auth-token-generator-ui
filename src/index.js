@@ -10,7 +10,6 @@ document.getElementsByName('type').forEach(
 )
 document.querySelectorAll('.scopeLabel').forEach(
     r => {
-        console.log('event')
         r.addEventListener('click', e => document.querySelectorAll('.scopeCheck').forEach(ee => { if (ee.value === r.innerHTML) ee.checked = !ee.checked }))
     }
 )
@@ -43,7 +42,8 @@ document.getElementById('getToken').addEventListener('click', async e => {
     document.getElementById('copyWrap').classList.remove('hide')
 })
 document.getElementById('copyCopy').addEventListener('click', async e => {
-    const th = document.getElementById('code').value
+    const th = document.getElementById('copy').value
+    console.log(th)
     navigator.clipboard.writeText(th)
 })
 async function getClientId() {
