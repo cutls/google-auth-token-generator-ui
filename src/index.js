@@ -29,6 +29,7 @@ document.getElementById('blank').addEventListener('click', async e => {
     document.getElementById('auth').classList.remove('hide')
 })
 document.getElementById('getToken').addEventListener('click', async e => {
+    const code = document.getElementById('code').value
     const promise = await fetch(`/.netlify/functions/token`, {
         method: 'POST',
         headers: {
@@ -37,7 +38,7 @@ document.getElementById('getToken').addEventListener('click', async e => {
         body: JSON.stringify({ code })
     })
     const json = await promise.json()
-    document.getElementById('code').value = JSON.stringify(json.data)
+    document.getElementById('copy').value = JSON.stringify(json.data)
     document.getElementById('prmpt').classList.add('hide')
     document.getElementById('copyWrap').classList.remove('hide')
 })
